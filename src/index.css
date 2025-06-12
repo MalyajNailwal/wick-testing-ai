@@ -109,6 +109,14 @@
   .animate-pulse-glow {
     animation: pulseGlow 2s ease-in-out infinite;
   }
+
+  .hover-scale {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.02);
+  }
 }
 
 @keyframes fadeIn {
@@ -142,7 +150,7 @@
   }
 }
 
-/* Custom scrollbar */
+/* Enhanced scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
@@ -152,10 +160,49 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(156, 163, 175, 0.3);
+  background: rgba(59, 130, 246, 0.3);
   border-radius: 3px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(156, 163, 175, 0.5);
+  background: rgba(59, 130, 246, 0.5);
+}
+
+/* Automotive theme enhancements */
+.automotive-gradient {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Professional message styling */
+.message-content {
+  line-height: 1.6;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.message-content h1,
+.message-content h2,
+.message-content h3 {
+  font-weight: 600;
+  margin: 1em 0 0.5em 0;
+}
+
+.message-content p {
+  margin: 0.5em 0;
+}
+
+.message-content ul,
+.message-content ol {
+  margin: 0.5em 0;
+  padding-left: 1.5em;
+}
+
+.message-content li {
+  margin: 0.25em 0;
 }

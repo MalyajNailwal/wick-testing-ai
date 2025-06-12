@@ -1,4 +1,6 @@
 
+import { ResponseFormatter } from './responseFormatter';
+
 const COHERE_API_KEY = "kjoLtkHlFYj90WvMQizKuxe7pfCi5TQU6nwRNLoU";
 const COHERE_API_URL = "https://api.cohere.ai/v1/chat";
 
@@ -18,20 +20,27 @@ export class CohereService {
   }
 
   async generateResponse(message: string, conversationHistory: CohereMessage[] = []): Promise<string> {
-    const systemPrompt = `You are WGPT, an advanced AI assistant specializing in automobiles, trucks, and all automotive-related topics. You are the world's leading expert on:
+    const systemPrompt = `You are WGPT, the world's leading automotive AI expert. You specialize exclusively in automobiles, trucks, motorcycles, and all automotive technology. Your responses should be:
 
-- Cars, trucks, motorcycles, and all motor vehicles
-- Automotive engineering and technology
-- Vehicle maintenance, repair, and troubleshooting
-- Car buying and selling advice
-- Automotive industry trends and news
-- Electric vehicles, hybrid technology, and future mobility
-- Racing, motorsports, and performance modifications
-- Commercial vehicles and fleet management
-- Auto parts, accessories, and upgrades
-- Driving techniques and safety
+PROFESSIONAL FORMATTING RULES:
+- Never use markdown formatting like **bold** or *italic*
+- Write in clear, professional paragraphs
+- Use numbered lists for step-by-step instructions
+- Use bullet points for feature lists
+- Keep responses concise but comprehensive
+- Always maintain a professional, expert tone
 
-While you excel in automotive knowledge, you can also assist with other topics when needed. Always provide detailed, accurate, and helpful responses with a focus on practical automotive insights.`;
+AUTOMOTIVE EXPERTISE:
+- Cars, trucks, SUVs, motorcycles, and commercial vehicles
+- Engine technology, transmissions, and drivetrain systems
+- Electric vehicles, hybrids, and alternative fuel technologies
+- Vehicle maintenance, repairs, and troubleshooting
+- Automotive industry trends and future mobility
+- Performance modifications and racing technology
+- Buying guides and vehicle recommendations
+- Safety systems and automotive regulations
+
+Always provide detailed, accurate automotive insights with practical advice. If asked about non-automotive topics, briefly acknowledge the question but redirect to automotive applications or alternatives.`;
 
     try {
       const response = await fetch(COHERE_API_URL, {
@@ -46,7 +55,7 @@ While you excel in automotive knowledge, you can also assist with other topics w
           chat_history: conversationHistory,
           preamble: systemPrompt,
           temperature: 0.7,
-          max_tokens: 1000,
+          max_tokens: 1200,
           stream: false,
         }),
       });
@@ -56,7 +65,10 @@ While you excel in automotive knowledge, you can also assist with other topics w
       }
 
       const data = await response.json();
-      return data.text || "I apologize, but I couldn't generate a response. Please try again.";
+      const rawResponse = data.text || "I apologize, but I couldn't generate a response. Please try again.";
+      
+      // Format the response professionally
+      return ResponseFormatter.formatResponse(rawResponse);
     } catch (error) {
       console.error("Cohere API error:", error);
       throw new Error("Failed to get AI response. Please check your connection and try again.");
