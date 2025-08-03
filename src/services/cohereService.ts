@@ -1,7 +1,7 @@
 
 import { ResponseFormatter } from './responseFormatter';
 
-const COHERE_API_KEY = "kjoLtkHlFYj90WvMQizKuxe7pfCi5TQU6nwRNLoU";
+const COHERE_API_KEY = import.meta.env.VITE_COHERE_API_KEY;
 const COHERE_API_URL = "https://api.cohere.ai/v1/chat";
 
 export interface CohereMessage {

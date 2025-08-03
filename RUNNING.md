@@ -6,27 +6,33 @@ This guide will help you set up and run the project from the GitHub repository: 
 - Node.js (v18 or higher recommended)
 - npm (comes with Node.js)
 - Git
+- Visual Studio Code (recommended)
 
 ## Steps
 
-### 1. Clone the Repository
-Open your terminal and run:
-```bash
-git clone https://github.com/MalyajNailwal/wick-testing-ai.git
-```
+### 1. Get the GitHub Link
+Copy the repository URL: `https://github.com/MalyajNailwal/wick-testing-ai.git`
 
-### 2. Navigate to the Project Directory
-```bash
-cd wick-testing-ai
-```
+### 2. Open Visual Studio Code
+Launch VS Code on your computer.
 
-### 3. Install Dependencies
+### 3. Clone the Repository in VS Code
+- Open the Command Palette (`Cmd+Shift+P` on Mac, `Ctrl+Shift+P` on Windows/Linux)
+- Type `Git: Clone` and select it
+- Paste the repository URL and press Enter
+- Choose a folder to clone into
+- When prompted, click "Open" to open the cloned project in VS Code
+
+### 4. Open a Terminal in VS Code
+- Go to `View` > `Terminal` or press ``Ctrl+` `` (backtick)
+
+### 5. Install Dependencies
 Use the legacy peer dependencies flag to avoid conflicts:
 ```bash
 npm install --legacy-peer-deps
 ```
 
-### 4. Start the Development Server
+### 6. Start the Development Server
 ```bash
 npm run dev
 ```

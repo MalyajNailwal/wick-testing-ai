@@ -20,6 +20,12 @@ A voice-enabled AI chat web application built with React, Vite, and TypeScript.
 npm install --legacy-peer-deps
 ```
 
+### Environment Variables
+Create a `.env` file in the project root and add your Cohere API key:
+```env
+VITE_COHERE_API_KEY=your_cohere_api_key_here
+```
+
 ### Running Locally
 ```bash
 npm run dev
