@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: wick-ai-trial
+    env: node
+    buildCommand: npm ci && npm run build
+    startCommand: npm run preview
+    envVars:
+      - key: NODE_VERSION
+        value: 18
+      - key: PORT
+        value: 4173
