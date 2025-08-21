@@ -1,11 +1,13 @@
 services:
   - type: web
     name: wick-ai-trial
-    env: node
+    env: static
     buildCommand: npm ci && npm run build
-    startCommand: npm run preview
+    staticPublishPath: dist
     envVars:
       - key: NODE_VERSION
         value: 18
-      - key: PORT
-        value: 4173
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

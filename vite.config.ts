@@ -8,11 +8,16 @@ export default defineConfig({
     host: '::',
     port: 8080,
   },
-  base: './',
+  base: '/',
   plugins: [react()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
+  },
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: true,
   },
 })
